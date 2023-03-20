@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="container py-5">
+    <h1 class='display-1 text-center mb-5'>Django App</h1>
+
+    <p class='text-center fs-5'>Si estás buscando una forma eficiente de administrar tus tareas diarias, nuestro sistema de registro y login de usuarios es justo lo que necesitas. Con nuestro sistema, podrás crear una cuenta personalizada para acceder a una amplia gama de opciones de administración de tareas. Una vez autenticado, podrás crear y editar tareas, establecer plazos, agregar notas y etiquetas, y mucho más. Además, nuestro sistema es fácil de usar y altamente seguro, lo que significa que tus datos personales y tus tareas estarán siempre protegidos. No pierdas más tiempo tratando de manejar tus tareas por tu cuenta. ¡Regístrate hoy y comienza a administrar tus tareas de manera más eficiente!.</p>
+    {% if not user.is_authenticated  %}
+
+
+    <div class='text-center'>
+        <a href="{% url 'signin' %}" class="btn btn-dark mx-2">
+            Signin
+        </a>
+        <a href="{% url 'signup' %}" class="btn btn-secondary mx-2">
+            Signup
+        </a>  
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock content %}

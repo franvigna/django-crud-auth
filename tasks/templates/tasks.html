@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="mt-4 text-center display-4 py-3">Tasks {{status}}</h1>
+            <a class='text-primary' href="{% url 'create_task' %}">Crete a new Task</a>
+            <div class="list-group">
+                {% for task in tasks %}
+                <a
+                    class="text-decoration-none list-group-item mb-1"
+                    href="{% url 'task_detail' task.id %}"
+                >
+                    <div class="d-flex justify-content-between">
+                        {% if task.important %}
+                        <h4 class=' text-danger'>{{task.title}} ❗❗</h4>
+                        {% else %}
+                        <h4 class='text-decoration-none text-dark'>{{task.title}}</h4>
+                        {% endif %}
+
+                        <p class='text-secondary'>{{task.user.username}}</p>
+                    </div>
+
+                    <p class='text-secondary'>{{task.description}}</p>
+                    <p class='text-secondary'>{{task.datecompleted|date:'M j Y:i'}}</p>
+                </a>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}
